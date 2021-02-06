@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script type="text/javascript">
+    var verifyCallback = function (response) {
+        document.getElementById("g").value = response;
+    };
+    var onloadCallback = function () {
+        grecaptcha.render('g-recaptcha', {
+            'sitekey': '6Lckr0waAAAAADXXbizBpesvhY-aJgyW-S-TeuQL',
+            'callback': verifyCallback
+        });
+    };
+</script>
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+            <form id="demo-form" method="post" action="/Home/login">
+                帳號:<input id="uid" name="uid" /><br>
+                密碼:<input id="pw" type="password" name="password" /><br>
+                <input type="hidden" id="g" name="g"/>
+                <div id="g-recaptcha" ></div>
+                <button type="submit">送出</button>
+            </form>
+
+        </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>
